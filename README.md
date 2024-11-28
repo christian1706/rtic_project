@@ -28,6 +28,7 @@ of this controllers.
 
 To run either of the controllers use the command 
 ```
+    roslaunch turtlebot3_gazebo turtlebot3_empty.launch
     rosrun trajectory sliding_mode.py 
     rosrun trajectory proportional_controller.py 
     rosrun trajectory target.py 
