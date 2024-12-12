@@ -61,7 +61,7 @@ def main():
     distance_errors = []
     orientation_errors = []
     dt = 0.1
-    t_final = 65
+    t_final = 38
     time_steps = np.arange(0, t_final, dt)
 
     print(
@@ -151,7 +151,7 @@ def main():
         if input_trajectory != "target":
             plt.plot(x_theorique, y_theorique, label="Theoretical Trajectory", linestyle="--", color="yellow")
         plt.scatter(x_vals[0], y_vals[0], color="red", label="Initial Position")
-        plt.scatter(x_vals[-1], y_vals[-1], color='green', label='target Position')
+        plt.scatter(x_vals[-1], y_vals[-1], color='green', label='final Position')
         plt.xlabel("x (m)")
         plt.ylabel("y (m)")
         plt.legend()
@@ -172,7 +172,7 @@ def main():
         plt.subplot(2, 2, 3)
         plt.plot(time_steps, x_vals[0:-1], label="x - variation ", color="blue")
         #plt.scatter(time_steps, y_vals[0], color="red", label="Initial Position")
-        plt.xlabel("x (m)")
+        plt.xlabel("time (t)")
         plt.ylabel("y (m)")
         plt.legend()
         plt.title("X variation over time")
