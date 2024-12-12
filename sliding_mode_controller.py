@@ -97,7 +97,7 @@ def main():
     error_orientation_list = []
     theta_list = []
     dt = 0.1
-    t_final = 60
+    t_final = 65
     time_steps = np.arange(0, t_final, dt)
 
     print("Input the name of the trajectory you want the robot to describe: infinity, circular, target")
@@ -215,11 +215,11 @@ def main():
         plt.figure(figsize=(12, 6))
 
         # Graph of trajectory
-        plt.subplot(1, 2, 1)
+        plt.subplot(2, 2, 1)
         plt.plot(x_vals, y_vals, label="robot trajectory", color="blue")
         plt.plot(x_theorical, y_theorical, label="theorical Trajectory", color="yellow", linestyle="--")
         plt.scatter(x_vals[0], y_vals[0], color='red', label='initial Position')
-        plt.scatter(x_theorical[-1], y_theorical[-1], color='blue', label='target Position')
+        plt.scatter(x_vals[-1], y_vals[-1], color='green', label='target Position')
         plt.xlabel("Position x (m)")
         plt.ylabel("Position y (m)")
         plt.legend()
@@ -229,7 +229,7 @@ def main():
 
 
         # Graph of errors
-        plt.subplot(1, 2, 2)
+        plt.subplot(2, 2, 2)
         plt.plot(time_steps, erro_distance_list, label="distance error", color="blue")
         plt.plot(time_steps, error_orientation_list, label="orientation error", color="orange")
         plt.xlabel("Time (s)")
@@ -237,6 +237,27 @@ def main():
         plt.legend()
         plt.title("evolution of errors with respect to the time")
         plt.grid()
+
+        plt.subplot(2, 2, 3)
+        plt.plot(time_steps, x_vals[0:-1], label="x - variation ", color="blue")
+        #plt.scatter(time_steps, y_vals[0], color="red", label="Initial Position")
+        plt.xlabel("x (m)")
+        plt.ylabel("y (m)")
+        plt.legend()
+        plt.title("X variation over time")
+        plt.grid()
+        plt.axis("equal")
+
+        plt.subplot(2, 2, 4)
+        plt.plot(time_steps, y_vals[0:-1], label="y - variation ", color="blue")
+        #plt.scatter(time_steps, y_vals[0], color="red", label="Initial Position")
+        plt.xlabel("time (t)")
+        plt.ylabel("y (m)")
+        plt.legend()
+        plt.title("Y variation over time")
+        plt.grid()
+        plt.axis("equal")
+
 
         plt.tight_layout()
         plt.show()
